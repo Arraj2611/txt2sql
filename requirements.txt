@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+psycopg2-binary
+langchain
+langgraph
+langsmith
+langchain-groq
+python-dotenv
+pydantic 
