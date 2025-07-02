@@ -7,4 +7,6 @@ langgraph
 langsmith
 langchain-groq
 python-dotenv
-pydantic 
+pydantic
+streamlit
+requests 

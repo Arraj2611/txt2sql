@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.exc import SQLAlchemyError
-from config import DATABASE_URL
+from .config import DATABASE_URL
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
@@ -16,8 +16,6 @@ def get_db_session():
 
 def get_db_schema(session):
     """Function to get the database schema as a string."""
-    # This is a simplified example. You might want to be more specific
-    # about which tables to include for more complex databases.
     query = """
     SELECT table_name, column_name, data_type
     FROM information_schema.columns
@@ -47,7 +45,6 @@ def execute_sql_query(session, sql_query: str):
         result = session.execute(text(sql_query))
         if result.returns_rows:
             rows = result.fetchall()
-            # Convert list of tuples to a more readable string format
             return "\n".join([str(row) for row in rows])
         else:
             session.commit()
