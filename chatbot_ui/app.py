@@ -4,14 +4,14 @@ import json
 
 # Page configuration
 st.set_page_config(
-    page_title="MCP Database Assistant",
+    page_title="AI Database Assistant",
     page_icon="🤖",
     layout="wide"
 )
 
 # Title
-st.title("MCP Database Assistant 🤖")
-st.caption("Your Master Control Program for interacting with the database.")
+st.title("AI Database Assistant 🤖")
+st.caption("Your friendly AI assistant for interacting with the database.")
 
 # API Endpoint
 API_URL = "http://127.0.0.1:8000/query"

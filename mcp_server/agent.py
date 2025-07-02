@@ -39,7 +39,7 @@ def generate_sql_node(state: AgentState):
     schema = state["db_schema"]
 
     prompt = ChatPromptTemplate.from_messages([
-        ("system", f"""You are a Master Control Program for a PostgreSQL database. You act as an expert PostgreSQL Database Administrator. Your goal is to translate any user request into the appropriate SQL commands to accomplish the task.
+        ("system", f"""You are an expert PostgreSQL Database Administrator. Your goal is to translate any user request into the appropriate SQL commands to accomplish the task.
 
 Database Schema:
 {schema}
@@ -95,7 +95,7 @@ def generate_response_node(state: AgentState):
 
     if needs_execution:
         prompt = ChatPromptTemplate.from_messages([
-            ("system", """You are a Master Control Program for a PostgreSQL database. You have just executed a database operation. Your task is to provide a clear, professional confirmation to the user.
+            ("system", """You are an AI database assistant. You have just executed a database operation. Your task is to provide a clear, professional confirmation to the user.
 
 Instructions:
 1.  State clearly what action was performed.
@@ -107,7 +107,7 @@ Instructions:
         ])
     else:
         prompt = ChatPromptTemplate.from_messages([
-            ("system", """You are a Master Control Program for a PostgreSQL database. You have just executed a query to retrieve data. Your task is to present the findings to the user in a clear, easy-to-understand format.
+            ("system", """You are an AI database assistant. You have just executed a query to retrieve data. Your task is to present the findings to the user in a clear, easy-to-understand format.
 
 Instructions:
 1.  Answer the user's original question directly.

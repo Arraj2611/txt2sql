@@ -4,8 +4,8 @@ from .agent import run_agent
 import uvicorn
 
 app = FastAPI(
-    title="MCP Server",
-    description="A Master Control Program for handling natural language database queries.",
+    title="Natural Language to SQL Agent",
+    description="An AI agent for handling natural language database queries.",
     version="1.0.0"
 )
 
@@ -22,7 +22,7 @@ def process_query(request: QueryRequest):
 
 @app.get("/", summary="Root", description="Root endpoint to check if the API is running.")
 def read_root():
-    return {"message": "MCP Server is running. Post your query to /query."}
+    return {"message": "AI Agent Server is running. Post your query to /query."}
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)

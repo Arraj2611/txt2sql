@@ -1,6 +1,6 @@
-# Natural Language to SQL - MCP Agent
+# Natural Language to SQL AI Agent
 
-This project implements an AI agent that converts natural language queries into SQL commands. It uses a client-server architecture with a FastAPI backend acting as a "Master Control Program" (MCP) and a Streamlit-based chatbot UI as the client.
+This project implements an AI agent that converts natural language queries into SQL commands. It uses a client-server architecture with a FastAPI backend and a Streamlit-based chatbot UI as the client.
 
 ## Project Structure
 
@@ -21,7 +21,7 @@ This project implements an AI agent that converts natural language queries into 
 └── requirements.txt
 ```
 
-- **`mcp_server/`**: Contains the FastAPI backend application (the "MCP Server").
+- **`mcp_server/`**: Contains the FastAPI backend application (the "AI Agent Server").
   - `main.py`: The main FastAPI application file.
   - `agent.py`: Contains the core logic of the LangGraph-based AI agent.
   - `database.py`: Manages the database connection.
@@ -62,7 +62,7 @@ This project implements an AI agent that converts natural language queries into 
 
 You will need to run two separate processes in two different terminals.
 
-### 1. Run the MCP Server (Backend)
+### 1. Run the AI Agent Server (Backend)
 
 In your first terminal, run the following command from the project's root directory to start the FastAPI server:
 
@@ -88,6 +88,6 @@ You can now interact with your database by typing natural language queries into 
 
 Since the project no longer includes a sample data script, your database will initially be empty.
 
-The MCP agent is capable of creating tables and inserting data for you. To get started, you can ask the agent to create the initial schema. For example, you can use a prompt like this in the chat interface:
+The AI agent is capable of creating tables and inserting data for you. To get started, you can ask the agent to create the initial schema. For example, you can use a prompt like this in the chat interface:
 
 "Create an `employees` table with columns for id, name, and hire_date. Also create a `departments` table with id and name. Then, create a `salaries` table with employee_id, amount, and date. Finally, insert a few sample records into each table so I can query them."
