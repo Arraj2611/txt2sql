@@ -91,3 +91,20 @@ Since the project no longer includes a sample data script, your database will in
 The AI agent is capable of creating tables and inserting data for you. To get started, you can ask the agent to create the initial schema. For example, you can use a prompt like this in the chat interface:
 
 "Create an `employees` table with columns for id, name, and hire_date. Also create a `departments` table with id and name. Then, create a `salaries` table with employee_id, amount, and date. Finally, insert a few sample records into each table so I can query them."
+
+## Backend Workflow (LangGraph)
+
+The backend agent is built using [LangGraph](https://langchain-ai.github.io/langgraph/) to create a stateful, cyclical workflow. The graph defines a series of nodes that process a request in sequence, progressively adding information to a shared `AgentState` until a final response is generated.
+
+The process flow is as follows:
+
+1. **`get_schema`**: The graph starts by fetching the database schema. This provides the AI with the necessary context about the tables and columns.
+2. **`generate_sql`**: The agent uses an LLM (via Groq) to convert the user's natural language question and the database schema into an executable SQL query.
+3. **`execute_sql`**: The generated SQL query is run against the database. The raw result is captured and stored.
+4. **`generate_response`**: The agent uses the LLM one last time to synthesize the original question, the executed query, and the database result into a polished, human-readable answer.
+
+This structured flow ensures that each step of the process is handled reliably and predictably.
+
+### Workflow Diagram
+
+![Agent Workflow](Images/agent_workflow_diagram.png)
